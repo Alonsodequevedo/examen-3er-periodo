@@ -1,0 +1,31 @@
+#include <stdio.h>
+
+
+#define MAX_COLUMNAS 3000
+#define TAMANIO_PALABRA 100
+
+int main() {
+    FILE *archivo = fopen("emails.csv", "r");
+    if (archivo == NULL) {
+        printf("No se pudo abrir el archivo.\n");
+        return 1;
+    }
+
+    char palabras[MAX_COLUMNAS][TAMANIO_PALABRA];
+    int num_columnas = 0;
+
+    while (fscanf(archivo, "%s", palabras[num_columnas]) == 1 && num_columnas < MAX_COLUMNAS) {
+        num_columnas++;
+    }
+
+    int limite_columnas = num_columnas < MAX_COLUMNAS ? num_columnas : MAX_COLUMNAS;
+	int i;
+    printf("Palabras de la primera fila (limitado a %d columnas):\n", limite_columnas);
+    for ( i = 0; i < limite_columnas; i++) {
+        printf("Columna %d: %s\n", i + 1, palabras[i]);
+    }
+
+    fclose(archivo);
+
+    return 0;
+}
