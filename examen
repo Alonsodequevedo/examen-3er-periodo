@@ -112,7 +112,7 @@ int main()
     }
 
     fclose(archivo_salida);
-    printf("El numro de las palabras contadas se guardo como: 180536.txt\n");
+    printf("El numero de las palabras contadas se guardo como: 180536.txt\n");
 
     return 0;
 }
